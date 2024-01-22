@@ -8,10 +8,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.aspire.daybreaktodo_app" />
+                  <option name="mobileSdkAppId" value="1:399638153951:android:4914230a8d3f909a74b76a" />
+                  <option name="projectId" value="daybreak-todo-app" />
+                  <option name="projectNumber" value="399638153951" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

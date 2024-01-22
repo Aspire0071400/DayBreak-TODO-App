@@ -71,6 +71,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/view2">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/taskName_tiet_updateTaskDialog"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/inputFieldBackground"
@@ -94,6 +95,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/taskName_til_updateTaskDialog">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/taskDescription_tiet_updateTaskDialog"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/inputFieldBackground"
