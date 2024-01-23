@@ -8,4 +8,13 @@
     <string name="task_name">Task Name</string>
     <string name="save_task">Save Task</string>
     <string name="update_task">Update task</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="signup">SignUp</string>
+    <string name="re_enter_password">Re-enter Password</string>
+    <string name="enter_password">Enter Password</string>
+    <string name="enter_email">Enter Email</string>
+    <string name="login">Login</string>
+    <string name="new_here_signup">New here ? SignUp</string>
+    <string name="already_been_here_login">Already been here ? Login</string>
 </resources>
