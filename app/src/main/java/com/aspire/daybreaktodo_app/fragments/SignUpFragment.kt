@@ -11,6 +11,7 @@ import androidx.navigation.Navigation
 import com.aspire.daybreaktodo_app.R
 import com.aspire.daybreaktodo_app.databinding.FragmentSignUpBinding
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.OnFailureListener
 import com.google.firebase.auth.FirebaseAuth
 
 class SignUpFragment : Fragment() {
@@ -52,14 +53,19 @@ class SignUpFragment : Fragment() {
                 if(pass == verifyPass){
                     auth.createUserWithEmailAndPassword(email,pass).addOnCompleteListener(
                         OnCompleteListener {
+
                             if(it.isSuccessful){
                                 Toast.makeText(context,"SignUp Successful",Toast.LENGTH_SHORT).show()
-                                navControl.navigate(R.id.action_signUpFragment_to_homeFragment2)
+                                navControl.navigate(R.id.action_signUpFragment_to_homeFragment)
                             }else{
                                 Toast.makeText(context,it.exception?.message,Toast.LENGTH_SHORT).show()
                             }
                         })
+                }else{
+                    Toast.makeText(context,"Password doesn't Match",Toast.LENGTH_SHORT).show()
                 }
+            }else{
+                Toast.makeText(context,"Fields can't be Empty",Toast.LENGTH_SHORT).show()
             }
         }
     }

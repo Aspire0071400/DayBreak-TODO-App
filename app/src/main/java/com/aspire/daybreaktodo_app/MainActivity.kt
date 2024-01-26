@@ -1,22 +1,28 @@
 package com.aspire.daybreaktodo_app
 
 import android.app.Dialog
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
-import androidx.core.widget.addTextChangedListener
+import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import com.aspire.daybreaktodo_app.databinding.ActivityMainBinding
 import com.aspire.daybreaktodo_app.utils.setupDialog
 import com.aspire.daybreaktodo_app.utils.validateEditText
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+
 
 class MainActivity : AppCompatActivity() {
     private val mainBinding : ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
+    private lateinit var auth : FirebaseAuth
+    private lateinit var dbRef : DatabaseReference
+    private lateinit var navController : NavController
 
     private val addTaskDialog : Dialog by lazy {
         Dialog(this).apply {
@@ -38,6 +44,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mainBinding.root)
+
+
 
         //Adding Task and Description...
         val close_btn_addTaskDialog = addTaskDialog.findViewById<ImageView>(R.id.close_btn_addTaskDialog)
@@ -74,10 +82,7 @@ class MainActivity : AppCompatActivity() {
         val saveTaskBtn = addTaskDialog.findViewById<Button>(R.id.save_btn_addTaskDialog)
         saveTaskBtn.setOnClickListener {
             if(validateEditText(add_TaskName_tiet , add_TaskName_til) && validateEditText(add_Taskdescription_tiet , add_Taskdescription_til) ){
-                addTaskDialog.dismiss()
-                Toast.makeText(this,"Validated!!",Toast.LENGTH_SHORT).show()
-                loadingDialog.show()
-
+                Toast.makeText(this,"ok",Toast.LENGTH_SHORT).show()
             }
         }
 
@@ -120,4 +125,5 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
 }

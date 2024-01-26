@@ -5,22 +5,69 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.aspire.daybreaktodo_app.R
+import android.widget.Toast
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import com.aspire.daybreaktodo_app.databinding.FragmentHomeBinding
+import com.google.android.material.textfield.TextInputEditText
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), AddTaskDialogFragment.DialogSaveBtnClickListener {
+    private lateinit var auth : FirebaseAuth
+    private lateinit var dbRef : DatabaseReference
+    private lateinit var navController : NavController
+    private lateinit var binding: FragmentHomeBinding
+    private lateinit var addTaskDialogFragment: AddTaskDialogFragment
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        binding = FragmentHomeBinding.inflate(inflater,container,false)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        init(view)
+        registerEvents()
+    }
+
+    private fun registerEvents() {
+        binding.fabBtn.setOnClickListener {
+            addTaskDialogFragment = AddTaskDialogFragment()
+            addTaskDialogFragment.setListener(this)
+            addTaskDialogFragment.show(
+                childFragmentManager,
+                "addTaskDialogFragment"
+            )
+        }
+    }
+
+    private fun init(view: View) {
+        navController = Navigation.findNavController(view)
+        auth = FirebaseAuth.getInstance()
+        dbRef = FirebaseDatabase.getInstance().reference
+            .child("Tasks").child(auth.currentUser?.uid.toString())
+    }
+
+    override fun onSaveTask(task : String, taskNameTIET : TextInputEditText) {
+        dbRef.push().setValue(task).addOnCompleteListener{
+            if(it.isSuccessful){
+                Toast.makeText(context,"Saved",Toast.LENGTH_SHORT).show()
+                taskNameTIET.text = null
+            }else{
+                Toast.makeText(context,it.exception?.message,Toast.LENGTH_SHORT).show()
+
+            }
+            addTaskDialogFragment.dismiss()
+        }
     }
 
 

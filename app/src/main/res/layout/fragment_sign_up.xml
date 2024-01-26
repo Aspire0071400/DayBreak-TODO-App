@@ -40,8 +40,8 @@
                     android:id="@+id/signup_email_tiet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:hint="@string/enter_email" />
+                    android:hint="@string/enter_email"
+                    android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -60,8 +60,8 @@
                     android:id="@+id/signup_pass_tiet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:hint="@string/enter_password" />
+                    android:hint="@string/enter_password"
+                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -80,8 +80,8 @@
                     android:id="@+id/signup_repass_tiet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textPassword"
-                    android:hint="@string/re_enter_password" />
+                    android:hint="@string/re_enter_password"
+                    android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
@@ -89,11 +89,25 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:visibility="visible"
                 android:layout_marginBottom="8dp"
                 android:backgroundTint="#FDC828"
                 android:text="@string/signup"
                 android:textColor="@color/black"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/signup_repass_til" />
+
+            <ProgressBar
+                android:id="@+id/signup_progress"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:visibility="gone"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

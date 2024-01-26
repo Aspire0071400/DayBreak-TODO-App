@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "195196580590",
+    "firebase_url": "https://daybreak-246f0-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "daybreak-246f0",
+    "storage_bucket": "daybreak-246f0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:195196580590:android:c16acbe4214d5d4a75b9ff",
+        "android_client_info": {
+          "package_name": "com.aspire.daybreaktodo_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsAij_mMmKxesTeusnQAOKMFJF-AMDQ-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

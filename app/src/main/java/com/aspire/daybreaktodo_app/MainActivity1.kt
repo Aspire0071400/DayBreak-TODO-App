@@ -15,10 +15,4 @@ class MainActivity1 : AppCompatActivity() {
 
     }
 
-    fun loadFragment(fragment: Fragment) {
-        val fm = supportFragmentManager
-        val ft = fm.beginTransaction()
-        ft.replace(R.id.nav_host_fragment, fragment)
-        ft.commit()
-    }
 }

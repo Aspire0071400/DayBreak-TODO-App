@@ -26,7 +26,7 @@
 
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/signup_email_til"
+                android:id="@+id/login_email_til"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -45,7 +45,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/signup_pass_til"
+                android:id="@+id/login_pass_til"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -53,7 +53,7 @@
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signup_email_til"
+                app:layout_constraintTop_toBottomOf="@+id/login_email_til"
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -72,12 +72,26 @@
                 android:layout_marginBottom="8dp"
                 android:backgroundTint="#FDC828"
                 android:text="@string/login"
+                android:visibility="visible"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signup_pass_til" />
+                app:layout_constraintTop_toBottomOf="@+id/login_pass_til" />
+
+            <ProgressBar
+                android:id="@+id/login_progress"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/login_pass_til" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 

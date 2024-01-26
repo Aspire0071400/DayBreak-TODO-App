@@ -9,9 +9,9 @@
               <option name="connection">
                 <ConnectionSetting>
                   <option name="appId" value="com.aspire.daybreaktodo_app" />
-                  <option name="mobileSdkAppId" value="1:399638153951:android:4914230a8d3f909a74b76a" />
-                  <option name="projectId" value="daybreak-todo-app" />
-                  <option name="projectNumber" value="399638153951" />
+                  <option name="mobileSdkAppId" value="1:195196580590:android:c16acbe4214d5d4a75b9ff" />
+                  <option name="projectId" value="daybreak-246f0" />
+                  <option name="projectNumber" value="195196580590" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />
