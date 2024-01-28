@@ -27,7 +27,7 @@ class HomeFragment : Fragment(), AddTaskDialogFragment.DialogSaveBtnClickListene
     private lateinit var dbRef : DatabaseReference
     private lateinit var navController : NavController
     private lateinit var binding: FragmentHomeBinding
-    private lateinit var addTaskDialogFragment: AddTaskDialogFragment
+    private var addTaskDialogFragment: AddTaskDialogFragment? = null
     private lateinit var adapter : TaskAdapter
     private lateinit var list : MutableList<TaskModel>
 
@@ -51,11 +51,13 @@ class HomeFragment : Fragment(), AddTaskDialogFragment.DialogSaveBtnClickListene
 
     private fun registerEvents() {
         binding.fabBtn.setOnClickListener {
+            if(addTaskDialogFragment != null)
+                childFragmentManager.beginTransaction().remove(addTaskDialogFragment!!).commit()
             addTaskDialogFragment = AddTaskDialogFragment()
-            addTaskDialogFragment.setListener(this)
-            addTaskDialogFragment.show(
+            addTaskDialogFragment!!.setListener(this)
+            addTaskDialogFragment!!.show(
                 childFragmentManager,
-                "addTaskDialogFragment"
+                AddTaskDialogFragment.TAG
             )
         }
     }
@@ -98,12 +100,28 @@ class HomeFragment : Fragment(), AddTaskDialogFragment.DialogSaveBtnClickListene
         dbRef.push().setValue(task).addOnCompleteListener{
             if(it.isSuccessful){
                 Toast.makeText(context,"Saved",Toast.LENGTH_SHORT).show()
-                taskNameTIET.text = null
+
             }else{
                 Toast.makeText(context,it.exception?.message,Toast.LENGTH_SHORT).show()
 
             }
-            addTaskDialogFragment.dismiss()
+            taskNameTIET.text = null
+            addTaskDialogFragment!!.dismiss()
+        }
+    }
+
+    override fun onUpdateTask(taskModel: TaskModel, taskNameTIET: TextInputEditText) {
+        val map = HashMap<String,Any>()
+        map[taskModel.taskId] = taskModel.task
+        dbRef.updateChildren(map).addOnCompleteListener {
+            if(it.isSuccessful){
+                Toast.makeText(context,"Updated",Toast.LENGTH_SHORT).show()
+
+            }else{
+                Toast.makeText(context,it.exception?.message,Toast.LENGTH_SHORT).show()
+            }
+            taskNameTIET.text = null
+            addTaskDialogFragment!!.dismiss()
         }
     }
 
@@ -114,11 +132,17 @@ class HomeFragment : Fragment(), AddTaskDialogFragment.DialogSaveBtnClickListene
             }else{
                 Toast.makeText(context,it.exception?.message,Toast.LENGTH_SHORT).show()
             }
+
         }
     }
 
     override fun onEditTask(taskModel: TaskModel) {
-        TODO("Not yet implemented")
+        if(addTaskDialogFragment != null)
+            childFragmentManager.beginTransaction().remove(addTaskDialogFragment!!).commit()
+
+        addTaskDialogFragment = AddTaskDialogFragment.newInstance(taskModel.taskId,taskModel.task)
+        addTaskDialogFragment!!.setListener(this)
+        addTaskDialogFragment!!.show(childFragmentManager, AddTaskDialogFragment.TAG)
     }
 
 
